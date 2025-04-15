@@ -25,8 +25,8 @@ class BookCreate(BaseModel):
 class BookOut(BookCreate):
      id: int
 
-class Config:
-     orm_mode = True
+     class Config:
+          orm_mode = True
 
 # Endpoint to fetch all books
 @app.get("/books", response_model=List[BookOut])
