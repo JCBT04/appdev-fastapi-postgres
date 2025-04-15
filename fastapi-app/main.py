@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from typing import List
 from database import SessionLocal, engine
-from .models import Book, Base
+from models import Book, Base  # Note: No need for .models if the models.py is in the same directory
 
 # Create DB tables
 Base.metadata.create_all(bind=engine)
