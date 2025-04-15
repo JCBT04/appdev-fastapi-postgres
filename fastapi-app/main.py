@@ -1,16 +1,16 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from typing import List
 from database import SessionLocal, engine
-from models import Book, Base
+from model import Book, Base
 
-# Create tables
+# Create DB tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Dependency for DB session
+# Dependency for DB
 def get_db():
     db = SessionLocal()
     try:
@@ -18,7 +18,7 @@ def get_db():
     finally:
         db.close()
 
-# Pydantic Models
+# Pydantic schemas
 class BookCreate(BaseModel):
     title: str
     author: str
